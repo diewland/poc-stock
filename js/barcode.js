@@ -69,7 +69,10 @@ var barcode = function() {
 		elements.ctxg = elements.canvasg.getContext('2d');
 
 		if (navigator.getUserMedia) {
-			navigator.getUserMedia({audio: false, video: true}, function(stream) {
+			navigator.getUserMedia({
+          audio: false,
+          video: { facingMode: { exact: "environment" } }
+      }, function(stream) {
 				elements.video.src = window.URL.createObjectURL(stream);
 			}, function(error) {
 				console.log(error);
