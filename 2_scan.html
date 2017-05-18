@@ -38,9 +38,12 @@
 
     <!-- bottom script -->
     <script src='js/jquery-3.2.1.min.js'></script>
+    <script src='js/adapter-latest.js'></script>
     <script src='js/barcode.js'></script>
     <script>
       // barcode - http://www.webondevices.com/javascript-barcode-scanner/
+      // firefox facingMode - https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+      // facingMode Chrome fixed - http://stackoverflow.com/a/32364912/466693
       var sound = new Audio("js/barcode.wav");
       barcode.config.start = 0.1;
       barcode.config.end = 0.9;
