@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name='description' content='POV Stock System'>
+    <title>POC Stock System</title>
+  </head>
+  <body>
+    <h1>POC Stock</h1>
+    <hr>
+    <h2>(1/4) Take a photo</h2>
+    <input id='capture' type='file' accept='image/*' capture='camera'> 
+    <img id='preview' width='100%'>
+    <hr>
+    <input id='submit' type='button' value='Submit'>
+
+    <!-- bottom script -->
+    <script src='js/jquery-3.2.1.min.js'></script>
+    <script>
+      // HTML5 File API - http://stackoverflow.com/a/14069481/466693
+      $('#capture').change(function(){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          var b64 = e.target.result;
+          localStorage.setItem('poc_stock_photo', b64);
+          $('#preview').attr('src', b64);
+        };
+        reader.readAsDataURL(this.files[0]);
+      });
+
+      // submit
+      $('#submit').click(function(){
+        location.href = '2_qr.html';
+      });
+    </script>
+  </body>
+</html>
