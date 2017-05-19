@@ -147,7 +147,7 @@ $(function() {
             numOfWorkers: 4,
             decoder: {
                 readers : [{
-                    format: "code_128_reader",
+                    format: "ean_reader",
                     config: {}
                 }]
             },
