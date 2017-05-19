@@ -7,11 +7,17 @@
     <meta name='description' content='POV Stock System'>
     <title>POC Stock System</title>
     <style type='text/css'>
-      video {
+      #interactive.viewport {
+        position: relative;
+      }
+      #interactive.viewport > canvas, #interactive.viewport > video {
+        max-width: 100%;
         width: 100%;
       }
-      .drawingBuffer {
-        display: none;
+      canvas.drawing, canvas.drawingBuffer {
+        position: absolute;
+        left: 0;
+        top: 0;
       }
     </style>
   </head>
