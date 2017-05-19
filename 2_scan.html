@@ -7,18 +7,10 @@
     <meta name='description' content='POV Stock System'>
     <title>POC Stock System</title>
     <style type='text/css'>
-      #barcodevideo, #barcodecanvas, #barcodecanvasg {
+      video {
         width: 100%;
-      }	
-      #barcodecanvasg {
-        position: absolute;
-        top: 0px;
-        left: 0px;
       }
-      #barcode {
-        position: relative;
-      }	
-      #barcodecanvas {
+      .drawingBuffer {
         display: none;
       }
     </style>
@@ -27,11 +19,7 @@
     <h1>POC Stock</h1>
     <hr>
     <h2>(2/4) Scan Barcode</h2>
-    <div id="barcode">
-      <video id="barcodevideo" autoplay></video>
-      <canvas id="barcodecanvasg" ></canvas>
-    </div>
-    <canvas id="barcodecanvas" ></canvas>
+    <div id="interactive" class="viewport"></div>
     <div id="result"></div>
     <hr>
     <input id='submit' type='button' value='Submit'>
@@ -39,24 +27,14 @@
     <!-- bottom script -->
     <script src='js/jquery-3.2.1.min.js'></script>
     <script src='js/adapter-latest.js'></script>
-    <script src='js/barcode.js'></script>
+    <script src='js/quagga.min.js'></script>
+    <script src='js/scanner.js'></script>
+    <script src='js/scale.fix.js'></script>
     <script>
-      // barcode - http://www.webondevices.com/javascript-barcode-scanner/
+      // quaggaJS - https://serratus.github.io/quaggaJS/examples/live_w_locator.html
       // firefox facingMode - https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
       // facingMode Chrome fixed - http://stackoverflow.com/a/32364912/466693
-      var sound = new Audio("js/barcode.wav");
-      barcode.config.start = 0.1;
-      barcode.config.end = 0.9;
-      barcode.config.video = '#barcodevideo';
-      barcode.config.canvas = '#barcodecanvas';
-      barcode.config.canvasg = '#barcodecanvasg';
-      barcode.setHandler(function(barcode) {
-        $('#result').html(barcode);
-      });
-      barcode.init();
-      $('#result').bind('DOMSubtreeModified', function(e) {
-        sound.play();	
-      });
+      
 
       // submit
       $('#submit').click(function(){
